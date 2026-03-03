@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Holi 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    overflow-x:hidden;
+    text-align:center;
+    background: linear-gradient(-45deg,#ff0080,#ff8c00,#40e0d0,#ff1493);
+    background-size:400% 400%;
+    animation:gradient 8s ease infinite;
+    color:white;
+}
+
+@keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+header{
+    padding:40px 20px;
+}
+
+h1{
+    font-size:3rem;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px yellow;}
+    to{text-shadow:0 0 30px red;}
+}
+
+.photo{
+    margin:20px auto;
+}
+
+.photo img{
+    width:300px;
+    border-radius:25px;
+    box-shadow:0 0 30px white;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+    100%{transform:translateY(0);}
+}
+
+.message{
+    font-size:1.4rem;
+    margin:20px;
+    font-weight:600;
+}
+
+input{
+    padding:12px;
+    border:none;
+    border-radius:20px;
+    width:220px;
+    text-align:center;
+    font-size:1rem;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:20px;
+    margin:10px;
+    font-size:1rem;
+    cursor:pointer;
+    background:white;
+    color:#ff1493;
+    font-weight:bold;
+}
+
+button:hover{
+    background:yellow;
+}
+
+.share{
+    margin-top:15px;
+}
+
+.footer{
+    margin:40px 0 20px;
+    font-size:0.9rem;
+}
+
+/* Falling Colors */
+.color{
+    position:fixed;
+    top:-10px;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{transform:translateY(100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌈 Happy Holi My Dear Wife💖</h1>
+</header>
+
+<div class="photo">
+    <!-- Rename image file if needed -->
+    <img src="/image.png" alt="Holi Couple">
+</div>
+
+<div class="message" id="wishMessage">
+    Wishing you a colorful and romantic Holi filled with love and happiness!
+</div>
+
+<div>
+    <input type="text" id="nameInput" placeholder="Enter Your Name">
+    <br>
+    <button onclick="generateWish()">Generate Wish</button>
+</div>
+
+<div class="share">
+    <button onclick="shareWhatsApp()">Share on WhatsApp</button>
+</div>
+
+<div class="footer">
+    Made with ❤️ for Holi Celebration 2026
+</div>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <!-- Add your Holi mp3 file in same folder -->
+    <source src="holi_music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* Personalized Wish */
+function generateWish(){
+    let name=document.getElementById("nameInput").value;
+    if(name!=""){
+        document.getElementById("wishMessage").innerHTML=
+        "🌸 Happy Holi 2026 from "+name+"! 💕 May your life be filled with love, colors & happiness!";
+    }
+}
+
+/* WhatsApp Share */
+function shareWhatsApp(){
+    let text=document.getElementById("wishMessage").innerText;
+    let url="https://wa.me/?text="+encodeURIComponent(text+" 🌈 Visit this Holi Wish Page!");
+    window.open(url,"_blank");
+}
+
+/* Falling Color Animation */
+function createColor(){
+    const color=document.createElement("div");
+    color.classList.add("color");
+    document.body.appendChild(color);
+
+    const colors=["red","yellow","blue","green","pink","orange"];
+    color.style.background=colors[Math.floor(Math.random()*colors.length)];
+    color.style.left=Math.random()*window.innerWidth+"px";
+    color.style.animationDuration=(Math.random()*3+2)+"s";
+
+    setTimeout(()=>{color.remove();},5000);
+}
+setInterval(createColor,200);
+
+</script>
+
+</body>
+</html>
